@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: "text_db"
+    image: postgres:14.4-alpine
+    env_file:
+      - ".env"
+    restart: always
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  django:
+    container_name: django
+    build:
+      context: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 --noreload"
+    ports:
+      - "8003:8000"
+    restart: always
+    volumes:
+      - .:/uploads
+    env_file:
+      - ".env"
+    depends_on:
+      - db
+
+volumes:
+  local_pgdata:
