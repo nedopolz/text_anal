@@ -9,11 +9,9 @@ services:
     restart: always
     volumes:
       - ./postgresql:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 
-  django:
-    container_name: django
+  text_django:
+    container_name: text_django
     build:
       context: .
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 --noreload"

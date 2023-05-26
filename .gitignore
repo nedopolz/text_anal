@@ -2,7 +2,7 @@
 .vscode/
 .env
 __pycache__/
-
+postgresql/
 source/content/media/
 source/content/static/
 
