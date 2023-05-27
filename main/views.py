@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.views.generic import TemplateView, FormView
+from django.views.generic import FormView
 
 from main.forms import TextAnalyseForm
+from main.utils import analyse_text
 
 
 class IndexPageView(LoginRequiredMixin, FormView):
@@ -11,8 +12,8 @@ class IndexPageView(LoginRequiredMixin, FormView):
     form_class = TextAnalyseForm
 
     def form_valid(self, form):
-        # TODO весь анализ тут
-        text = self.request
-        messages.success(self.request, "Это 100% текст про бипки мамой клянусь")
+        text = self.request.POST['text']
+        topics_rating = analyse_text(text)
+        messages.success(self.request, str(topics_rating))
 
         return redirect('index')
