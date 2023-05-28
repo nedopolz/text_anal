@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'main',
     'accounts',
+    'analyze',
     'authentication',
     'rest_framework',
     'rest_framework_simplejwt',

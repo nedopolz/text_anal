@@ -7,11 +7,10 @@ from main.views import IndexPageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('authentication.urls', namespace='authentication')),
-
     path('', IndexPageView.as_view(), name='index'),
-
     path('accounts/', include('accounts.urls')),
+    path('api/v1/', include('authentication.urls', namespace='authentication')),
+    path('api/v1/', include('analyze.urls', namespace='analyze')),
 ]
 
 if settings.DEBUG:
