@@ -30,4 +30,4 @@ def analyse_text(text: str):
         cosine_similarity_matrix = cosine_similarity(vector_matrix)
         cosine_indexes[topic] = cosine_similarity_matrix[0][1]
 
-    return {k: v for k, v in sorted(cosine_indexes.items(), key=lambda x: x[1], reverse=True)}
+    return {k: round(v, 4) for k, v in sorted(cosine_indexes.items(), key=lambda x: x[1], reverse=True)}

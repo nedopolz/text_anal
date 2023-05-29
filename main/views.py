@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
+from django.utils.safestring import mark_safe
 from django.views.generic import FormView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -17,8 +18,7 @@ class IndexPageView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         text = self.request.POST['text']
         topics_rating = analyse_text(text)
-        messages.success(self.request, str(topics_rating))
-
+        messages.success(self.request, mark_safe('<br/>'.join([f'{k}: {v}' for k, v in topics_rating.items()])))
         return redirect('index')
 
 
