@@ -8,8 +8,7 @@ from main.views import IndexPageView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexPageView.as_view(), name='index'),
-    path('accounts/', include('accounts.urls')),
-    path('api/v1/', include('authentication.urls', namespace='authentication')),
+    path('api/v1/', include('accounts.urls', namespace='accounts')),
     path('api/v1/', include('main.urls', namespace='main')),
 ]
 
