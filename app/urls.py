@@ -10,7 +10,7 @@ urlpatterns = [
     path('', IndexPageView.as_view(), name='index'),
     path('accounts/', include('accounts.urls')),
     path('api/v1/', include('authentication.urls', namespace='authentication')),
-    path('api/v1/', include('analyze.urls', namespace='analyze')),
+    path('api/v1/', include('main.urls', namespace='main')),
 ]
 
 if settings.DEBUG:
