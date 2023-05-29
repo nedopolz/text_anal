@@ -1,4 +1,4 @@
-import pymorphy2
+import pymorphy3
 import re
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -7,7 +7,7 @@ from main.config import KEY_WORDS, STOP_TAGS
 
 
 def analyse_text(text: str):
-    morph = pymorphy2.MorphAnalyzer()
+    morph = pymorphy3.MorphAnalyzer()
 
     clear_text = re.sub(r'[^А-Яа-яЁё\s\-]', ' ', text)
 
